@@ -11,11 +11,11 @@ const userRoute = require("./Routes/userRoute");
 
 const app = express();
 const port = process.env.PORT || 3000;
-const mongoURL = "mongodb+srv://admin:admin@nbad.ur6szqh.mongodb.net/personalBudget?retryWrites=true&w=majority&appName=NBAD";
+const mongoURL = "mongodb+srv://stumarad:surya@nbad.kvwmmtt.mongodb.net/personalBudget?retryWrites=true&w=majority&appName=Nbad";
 
 // Middleware
 app.use(cors({
-    origin: '', // Allow requests from localhost:4200
+    origin: 'http://159.65.249.186:8080', // Allow requests from localhost:4200
     credentials: true  // Enable CORS with credentials
 }));
 app.options('*', cors());
@@ -24,9 +24,9 @@ app.use(compression()); // gzip Compression
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
 
-app.use("/api/budget", budgetRoute);
-app.use("/api/expense", expenseRoute);
-app.use("/api/user", userRoute);
+app.use("/budget", budgetRoute);
+app.use("/expense", expenseRoute);
+app.use("/user", userRoute);
 
 app.use((req, res, next) => {
     res.status(400).send("Invalid Route!");
